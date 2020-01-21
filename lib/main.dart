@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'package:design_flutter/src/pages/scroll_page.dart';
+import 'package:design_flutter/src/pages/basic_page.dart';
+import 'package:design_flutter/src/pages/button_page.dart';
  
 void main() => runApp(MyApp());
  
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    // Change Color bar 
+    SystemChrome.setSystemUIOverlayStyle( SystemUiOverlayStyle.light.copyWith(
+      statusBarColor: Colors.black,
+    ));
+
     return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      title: 'Diseño',
+      initialRoute: 'button',
+      routes: {
+        'basico': (BuildContext context) => BasicPage(),
+        'scroll': (BuildContext context) => ScrollPage(),
+        'button': (BuildContext context) => ButtonPage(),
+      },
     );
   }
 }
